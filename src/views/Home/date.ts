@@ -14,6 +14,7 @@ export const wallpaperTypeList = [
 
 export const wallpaperList: Wallpaper[] = [
   {
+    id: 0,
     image: '/home/image1.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -23,6 +24,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'hot',
   },
   {
+    id: 1,
     image: '/home/image2.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -32,6 +34,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'new',
   },
   {
+    id: 2,
     image: '/home/image2.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -41,6 +44,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
   },
   {
+    id: 3,
     image: '/home/image1.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -50,6 +54,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
   },
   {
+    id: 4,
     image: '/home/image2.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -59,6 +64,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
   },
   {
+    id: 5,
     image: '/home/image1.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -68,6 +74,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
   },
   {
+    id: 6,
     image: '/home/image1.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -77,6 +84,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
   },
   {
+    id: 7,
     image: '/home/image1.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
@@ -86,6 +94,7 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
   },
   {
+    id: 8,
     image: '/home/image2.webp',
     title: '雾霾蓝ins风极简极简雾霾蓝ins风极简极简雾霾蓝ins风极简极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',

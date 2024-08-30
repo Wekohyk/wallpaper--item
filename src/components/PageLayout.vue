@@ -41,6 +41,7 @@
           <slot name="navigationBarTrailing"></slot>
         </div>
       </div>
+      <slot name="navigationBarContainer"></slot>
     </header>
     <main
       ref="mainElement"
@@ -106,6 +107,7 @@ interface Slots {
   navigationBarLeading(param: any): any;
   navigationBarCenter(param: any): any;
   navigationBarTrailing(param: any): any;
+  navigationBarContainer(param: any): any;
 }
 defineSlots<Slots>();
 

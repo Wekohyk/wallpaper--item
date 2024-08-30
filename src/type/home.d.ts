@@ -1,6 +1,7 @@
 export type Status = 'new' | 'hot' | 'normal';
 
 export interface Wallpaper {
+  id: number;
   image: string;
   title: string;
   value: string;

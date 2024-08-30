@@ -26,15 +26,23 @@
         <Icon icon="ph:question" width="28px" height="28px" color="#7A7A7A" />
       </div>
     </template>
-    <div class="mt-12 px-16 w-full h-full">
+
+    <template #navigationBarContainer>
       <div
-        class="overflow-x-scroll scrollbar-hidden w-full whitespace-nowrap flex gap-24 items-center justify-start"
+        class="mt-12 pl-16 overflow-x-scroll scrollbar-hidden w-full whitespace-nowrap flex gap-24 items-center justify-start"
       >
-        <div v-for="item in wallpaperTypeList" :key="item" class="text-14">
-          {{ item }}
+        <div
+          v-for="item in wallpaperTypeList"
+          :key="item"
+          class="flex flex-col items-center gap-2 rounded-1 text-#0A7AFF"
+        >
+          <div class="text-14">
+            {{ item }}
+          </div>
+          <div class="w-20 h-2 bg-#0A7AFF"></div>
         </div>
       </div>
-    </div>
+    </template>
   </PageLayout>
 </template>
 <script setup lang="ts">
