@@ -14,8 +14,11 @@ import './assets/styles/index.scss';
 import 'uno.css';
 // App
 import App from './App.vue';
+// 全局定义指令
+import backToTop from './directive/back-to-top';
 
 const app = createApp(App);
+app.directive('back-to-top', backToTop);
 
 app.use(pinia);
 app.use(i18n);

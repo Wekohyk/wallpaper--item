@@ -7,7 +7,7 @@
   >
     <!-- backdrop-filter backdrop-blur-2 -->
     <header
-      class="top-0 w-full flex-shrink-0 adapt-pt-0 z-9999999999"
+      class="top-0 w-full flex-shrink-0 adapt-pt-44 z-9999999999"
       :class="{
         'bg-transparent': transparentNavigationBar,
         '!fixed left-0': floatHeader,
@@ -15,26 +15,14 @@
       :style="{ backgroundColor: navBackgroundColor ?? 'unset' }"
     >
       <div class="navigation-bar grid grid-cols-[1fr_auto_1fr]">
-        <div class="flex-1 flex items-center h-44 pl-9px">
+        <div class="flex-1 flex items-center h-44 pl-16px">
           <div class="flex items-center mt-1" v-if="!hideBack" @click="back">
             <div class="relative w-26 h-26">
-              <img
-                v-if="isShowGoBackMode"
-                src="/goBackDark.webp"
-                alt=""
-                :style="{
-                  width: goBackWidth,
-                  height: goBackHeight,
-                }"
-              />
-              <img
-                v-else
-                src="/goBackLight.webp"
-                alt=""
-                :style="{
-                  width: goBackWidth,
-                  height: goBackHeight,
-                }"
+              <Icon
+                :color="isShowGoBackMode ? '#000' : '#fff'"
+                icon="weui:back-filled"
+                :width="goBackWidth"
+                :height="goBackHeight"
               />
             </div>
           </div>
@@ -74,6 +62,7 @@
 <script setup lang="ts">
 import { useAttrs, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { Icon } from '@iconify/vue';
 
 interface Props {
   transparentNavigationBar?: boolean;
