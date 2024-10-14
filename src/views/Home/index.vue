@@ -17,7 +17,7 @@
     <template #navigationBarTrailing>
       <div class="flex justify-center items-center gap-12 w-100 h-32">
         <div
-          class="flex items-center justify-center gap-2 w-60 h-26 bg-orange/8% rounded-16"
+          class="flex items-center justify-center gap-2 w-60 h-26 bg-orange/8% rounded-10"
         >
           <img src="/home/contribute.webp" class="w-20 h-20" />
           <div class="text-#FF9500 text-13 font-600">投稿</div>
@@ -29,7 +29,7 @@
 
     <template #navigationBarContainer>
       <div
-        class="mt-12 px-16 overflow-x-scroll scrollbar-hidden w-full h-25 whitespace-nowrap flex gap-24 items-center justify-start relative"
+        class="px-16 overflow-x-scroll scrollbar-hidden w-full h-30 whitespace-nowrap flex gap-24 items-center justify-start relative"
         ref="scrollRef"
       >
         <div
@@ -45,24 +45,63 @@
             {{ item.name }}
           </div>
         </div>
-
         <div
-          class="w-20 h-3 rounded-10 bg-#0A7AFF tabAnimation absolute top-22 left-19"
+          class="w-20 h-3 rounded-10 bg-#0A7AFF tabAnimation absolute top-26 left-19"
           :style="{ transform: `translateX(${tabId * 53}px)` }"
         ></div>
       </div>
     </template>
+
+    <!-- 主题示例 -->
+    <div class="px-16 mt-16 flex justify-between">
+      <div class="flex flex-col items-center gap-12 w-49% rounded-10">
+        <img src="/home/example.webp" alt="" class="w-full h-230" />
+        <div
+          class="w-full rounded-10"
+          v-for="item in leftWallpaperList"
+          :key="item.id"
+        >
+          <ThemeExample
+            v-if="item.showPosition === 'left'"
+            :itemList="item"
+            @showClick="selectExample(item)"
+          ></ThemeExample>
+        </div>
+      </div>
+      <div class="flex flex-col items-center gap-12 w-49% rounded-10">
+        <div
+          class="w-full rounded-10"
+          v-for="item in rightWallpaperList"
+          :key="item.id"
+        >
+          <ThemeExample
+            v-if="item.showPosition === 'right'"
+            :itemList="item"
+            @showClick="selectExample(item)"
+          ></ThemeExample>
+        </div>
+      </div>
+    </div>
   </PageLayout>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import PageLayout from '@/components/PageLayout.vue';
-import { wallpaperTypeList } from './date';
+import ThemeExample from './components/ThemeExample.vue';
+import { wallpaperTypeList, wallpaperList } from './date';
 import { ref } from 'vue';
 
 const tabId = ref(0);
 const scrollRef = ref(null);
+
+const leftWallpaperList = wallpaperList.filter(
+  item => item.showPosition === 'left',
+);
+
+const rightWallpaperList = wallpaperList.filter(
+  item => item.showPosition === 'right',
+);
 
 const moveBox = (el: HTMLDivElement) => {
   if (!scrollRef.value) return;
@@ -79,6 +118,10 @@ const moveBox = (el: HTMLDivElement) => {
 const moveCenter = (e: MouseEvent, index: number) => {
   moveBox(e.currentTarget as HTMLDivElement);
   tabId.value = index;
+};
+
+const selectExample = item => {
+  console.log(item);
 };
 </script>
 

@@ -9,4 +9,5 @@ export interface Wallpaper {
   avatarName: string;
   usePeople: string;
   status: Status;
+  showPosition: 'left' | 'right';
 }
