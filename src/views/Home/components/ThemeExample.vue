@@ -30,7 +30,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-defineEmits(['showClick']);
 </script>
 <style scoped lang="scss">
 .itemShadow {

@@ -60,11 +60,11 @@
           class="w-full rounded-10"
           v-for="item in leftWallpaperList"
           :key="item.id"
+          @click="selectExample(item)"
         >
           <ThemeExample
             v-if="item.showPosition === 'left'"
             :itemList="item"
-            @showClick="selectExample(item)"
           ></ThemeExample>
         </div>
       </div>
@@ -73,11 +73,11 @@
           class="w-full rounded-10"
           v-for="item in rightWallpaperList"
           :key="item.id"
+          @click="selectExample(item)"
         >
           <ThemeExample
             v-if="item.showPosition === 'right'"
             :itemList="item"
-            @showClick="selectExample(item)"
           ></ThemeExample>
         </div>
       </div>
@@ -121,7 +121,7 @@ const moveCenter = (e: MouseEvent, index: number) => {
 };
 
 const selectExample = item => {
-  console.log(item);
+  console.log(item.id);
 };
 </script>
 
