@@ -1,15 +1,38 @@
 import { Wallpaper } from '@/type/home';
 
 export const wallpaperTypeList = [
-  '热门',
-  'ins风',
-  '可爱',
-  '纯色',
-  '明星',
-  '创意',
-  '简约',
-  '拟物',
-  '写真',
+  {
+    id: 0,
+    name: '热门',
+  },
+  {
+    id: 1,
+    name: 'ins风',
+  },
+  {
+    id: 2,
+    name: '纯色',
+  },
+  {
+    id: 3,
+    name: '明星',
+  },
+  {
+    id: 4,
+    name: '创意',
+  },
+  {
+    id: 5,
+    name: '简约',
+  },
+  {
+    id: 6,
+    name: '拟物',
+  },
+  {
+    id: 7,
+    name: '写真',
+  },
 ];
 
 export const wallpaperList: Wallpaper[] = [

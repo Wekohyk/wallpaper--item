@@ -29,25 +29,61 @@
 
     <template #navigationBarContainer>
       <div
-        class="mt-12 pl-16 overflow-x-scroll scrollbar-hidden w-full whitespace-nowrap flex gap-24 items-center justify-start"
+        class="mt-12 px-16 overflow-x-scroll scrollbar-hidden w-full h-25 whitespace-nowrap flex gap-24 items-center justify-start relative"
+        ref="scrollRef"
       >
         <div
-          v-for="item in wallpaperTypeList"
-          :key="item"
-          class="flex flex-col items-center gap-2 rounded-1 text-#0A7AFF"
+          v-for="(item, index) in wallpaperTypeList"
+          :key="item.id"
+          class="flex flex-col items-center gap-2 rounded-1"
+          @click="moveCenter($event, index)"
         >
-          <div class="text-14">
-            {{ item }}
+          <div
+            class="text-14"
+            :class="tabId === item.id ? ' text-#0A7AFF' : ''"
+          >
+            {{ item.name }}
           </div>
-          <div class="w-20 h-2 bg-#0A7AFF"></div>
         </div>
+
+        <div
+          class="w-20 h-3 rounded-10 bg-#0A7AFF tabAnimation absolute top-22 left-19"
+          :style="{ transform: `translateX(${tabId * 53}px)` }"
+        ></div>
       </div>
     </template>
   </PageLayout>
 </template>
+
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import PageLayout from '@/components/PageLayout.vue';
 import { wallpaperTypeList } from './date';
+import { ref } from 'vue';
+
+const tabId = ref(0);
+const scrollRef = ref(null);
+
+const moveBox = (el: HTMLDivElement) => {
+  if (!scrollRef.value) return;
+  const { left: targetX, width: targetW } = el.getBoundingClientRect();
+  const scrollX = scrollRef.value.scrollLeft;
+  const scrollW = scrollRef.value.getBoundingClientRect().width;
+  const offset = targetX - scrollW / 2;
+  scrollRef.value.scrollTo({
+    left: scrollX + offset + targetW / 2,
+    behavior: 'smooth',
+  });
+};
+
+const moveCenter = (e: MouseEvent, index: number) => {
+  moveBox(e.currentTarget as HTMLDivElement);
+  tabId.value = index;
+};
 </script>
-<style scoped lang="scss"></style>
+
+<style scoped lang="scss">
+.tabAnimation {
+  transition: transform 0.3s ease;
+}
+</style>
