@@ -8,6 +8,11 @@ const router = createRouter({
       component: () => import('@/views/Home/index.vue'),
       meta: { title: 'Home' },
     },
+    {
+      path: '/customIcon',
+      component: () => import('@/views/CustomIcon/index.vue'),
+      meta: { title: 'CustomIcon' },
+    },
   ],
 });
 
