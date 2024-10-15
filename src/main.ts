@@ -16,10 +16,14 @@ import 'uno.css';
 import App from './App.vue';
 // 全局定义指令
 import backToTop from './directive/back-to-top';
+// Vant4组件 引入
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
 const app = createApp(App);
 app.directive('back-to-top', backToTop);
 
+app.use(Vant);
 app.use(pinia);
 app.use(i18n);
 app.use(router);

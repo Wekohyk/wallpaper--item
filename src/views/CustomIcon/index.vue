@@ -7,17 +7,35 @@
       <div class="text-#B3B3B3 text-14 font-500">安装</div>
     </template>
 
-    <div class="bg-#F6F7F9 w-100vw px-20 mt-20 mb-23">
+    <div class="bg-#F6F7F9 w-full px-20 mt-20 mb-23">
       <!-- 上方自定义图标 -->
-      <div class="bg-#FFF rounded-16 flex flex-col justify-center items-center">
-        <div class="flex flex-col">
-          <ToggleImg></ToggleImg>
-          <ToggleImg></ToggleImg>
-          <ToggleImg></ToggleImg>
-        </div>
+      <div
+        class="bg-#FFF rounded-16 flex flex-col justify-center items-center overflow-hidden"
+      >
+        <van-cell
+          v-for="(item, index) in toggleImgList"
+          :key="index"
+          class="my-grid-item"
+        >
+          <template #title>
+            <van-swipe-cell :before-close="beforeClose" class="w-full pl-10">
+              <ToggleImg></ToggleImg>
+              <template #right>
+                <div
+                  class="flex justify-center items-center w-74 h-full bg-#FF3B30 text-center text-#fff text-14"
+                >
+                  删除
+                </div>
+              </template>
+            </van-swipe-cell>
+          </template>
+        </van-cell>
       </div>
 
-      <div class="flex items-center justify-center mt-19 mb-13">
+      <div
+        class="flex items-center justify-center mt-19 mb-13"
+        @click="addToggleImg"
+      >
         <Icon
           icon="ic:round-add-circle"
           width="30px"
@@ -54,5 +72,21 @@
 import PageLayout from '@/components/PageLayout.vue';
 import ToggleImg from './components/ToggleImg.vue';
 import { Icon } from '@iconify/vue';
+import { ref } from 'vue';
+
+const toggleImgList = ref<number[]>([0, 1, 2]);
+
+const addToggleImg = () => {
+  console.log(toggleImgList.value);
+  toggleImgList.value.push(toggleImgList.value.length);
+};
+
+const beforeClose = () => {
+  console.log('delete');
+};
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.my-grid-item {
+  padding: 0px;
+}
+</style>

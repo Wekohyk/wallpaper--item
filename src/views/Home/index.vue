@@ -93,7 +93,7 @@ import { wallpaperTypeList, wallpaperList } from './date';
 import { ref } from 'vue';
 
 const tabId = ref(0);
-const scrollRef = ref(null);
+const scrollRef = ref<HTMLDivElement | null>(null);
 
 const leftWallpaperList = wallpaperList.filter(
   item => item.showPosition === 'left',
@@ -120,7 +120,7 @@ const moveCenter = (e: MouseEvent, index: number) => {
   tabId.value = index;
 };
 
-const selectExample = item => {
+const selectExample = (item: { id: number }) => {
   console.log(item.id);
 };
 </script>
