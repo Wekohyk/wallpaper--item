@@ -53,7 +53,7 @@
     </template>
 
     <!-- 主题示例 -->
-    <div class="px-16 mt-16 flex justify-between">
+    <div class="w-full px-16 mt-16 flex justify-between">
       <div class="flex flex-col items-center gap-12 w-49% rounded-10">
         <img src="/home/example.webp" alt="" class="w-full h-230" />
         <div
