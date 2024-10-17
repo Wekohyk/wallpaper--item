@@ -1,6 +1,6 @@
 <template>
-  <PageLayout enable-back-to-top hide-navigation-bar hideBack>
-    <template #navigationBarLeading>
+  <div class="fixed top-0 z-999 w-full">
+    <div class="flex justify-between pt-44 pl-16 pr-12 bg-#FFF w-full">
       <div
         class="flex justify-center items-center w-120 h-32 bg-#0A7AFF/6% rounded-19"
       >
@@ -13,8 +13,6 @@
           color="#0A7AFF"
         />
       </div>
-    </template>
-    <template #navigationBarTrailing>
       <div class="flex justify-center items-center gap-12 w-100 h-32">
         <div
           class="flex items-center justify-center gap-2 w-60 h-26 bg-orange/8% rounded-10"
@@ -25,69 +23,59 @@
 
         <Icon icon="ph:question" width="28px" height="28px" color="#7A7A7A" />
       </div>
-    </template>
+    </div>
 
-    <template #navigationBarContainer>
+    <!-- tab栏 -->
+    <van-tabs
+      v-model:active="tabId"
+      title-active-color="#0A7AFF"
+      lazy-render
+      line-width="20"
+    >
+      <van-tab
+        v-for="(item, index) in wallpaperTypeList"
+        :key="item.id"
+        :title="item.name"
+        class="flex flex-col items-center gap-2 rounded"
+        @click="moveCenter($event, index)"
+      ></van-tab>
+    </van-tabs>
+  </div>
+
+  <!-- 主题示例 -->
+  <div class="w-100vw h-134 px-16 mt-134 flex justify-between">
+    <div class="flex flex-col items-center gap-12 w-49% rounded-10">
+      <img src="/home/example.webp" alt="" class="w-full h-230" />
       <div
-        class="px-16 overflow-x-scroll scrollbar-hidden w-full h-30 whitespace-nowrap flex gap-24 items-center justify-start relative"
-        ref="scrollRef"
+        class="w-full rounded-10"
+        v-for="item in leftWallpaperList"
+        :key="item.id"
+        @click="selectExample(item)"
       >
-        <div
-          v-for="(item, index) in wallpaperTypeList"
-          :key="item.id"
-          class="flex flex-col items-center gap-2 rounded-1"
-          @click="moveCenter($event, index)"
-        >
-          <div
-            class="text-14"
-            :class="tabId === item.id ? ' text-#0A7AFF' : ''"
-          >
-            {{ item.name }}
-          </div>
-        </div>
-        <div
-          class="w-20 h-3 rounded-10 bg-#0A7AFF tabAnimation absolute top-26 left-19"
-          :style="{ transform: `translateX(${tabId * 53}px)` }"
-        ></div>
-      </div>
-    </template>
-
-    <!-- 主题示例 -->
-    <div class="w-full px-16 mt-16 flex justify-between">
-      <div class="flex flex-col items-center gap-12 w-49% rounded-10">
-        <img src="/home/example.webp" alt="" class="w-full h-230" />
-        <div
-          class="w-full rounded-10"
-          v-for="item in leftWallpaperList"
-          :key="item.id"
-          @click="selectExample(item)"
-        >
-          <ThemeExample
-            v-if="item.showPosition === 'left'"
-            :itemList="item"
-          ></ThemeExample>
-        </div>
-      </div>
-      <div class="flex flex-col items-center gap-12 w-49% rounded-10">
-        <div
-          class="w-full rounded-10"
-          v-for="item in rightWallpaperList"
-          :key="item.id"
-          @click="selectExample(item)"
-        >
-          <ThemeExample
-            v-if="item.showPosition === 'right'"
-            :itemList="item"
-          ></ThemeExample>
-        </div>
+        <ThemeExample
+          v-if="item.showPosition === 'left'"
+          :itemList="item"
+        ></ThemeExample>
       </div>
     </div>
-  </PageLayout>
+    <div class="flex flex-col items-center gap-12 w-49% rounded-10">
+      <div
+        class="w-full rounded-10"
+        v-for="item in rightWallpaperList"
+        :key="item.id"
+        @click="selectExample(item)"
+      >
+        <ThemeExample
+          v-if="item.showPosition === 'right'"
+          :itemList="item"
+        ></ThemeExample>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import PageLayout from '@/components/PageLayout.vue';
 import ThemeExample from './components/ThemeExample.vue';
 import { wallpaperTypeList, wallpaperList } from './date';
 import { ref } from 'vue';
@@ -128,5 +116,9 @@ const selectExample = (item: { id: number }) => {
 <style scoped lang="scss">
 .tabAnimation {
   transition: transform 0.3s ease;
+}
+
+.van-tabs :deep(.van-tabs__nav--line) {
+  padding-bottom: 8px;
 }
 </style>
