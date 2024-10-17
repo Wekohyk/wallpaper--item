@@ -1,6 +1,6 @@
 <template>
   <div class="fixed top-0 z-999 w-full">
-    <div class="flex justify-between pt-44 pl-16 pr-12 bg-#FFF w-full">
+    <div class="flex justify-between pt-43 pl-16 pr-12 bg-#FFF w-full">
       <div
         class="flex justify-center items-center w-120 h-32 bg-#0A7AFF/6% rounded-19"
         @click="linkCustomIcon"
@@ -43,36 +43,38 @@
     </van-tabs>
   </div>
 
-  <!-- 主题示例 -->
-  <div class="w-100vw h-134 px-16 mt-134 flex justify-between">
-    <div class="flex flex-col items-center gap-12 w-49% rounded-10">
-      <img src="/home/example.webp" alt="" class="w-full h-230" />
-      <div
-        class="w-full rounded-10"
-        v-for="item in leftWallpaperList"
-        :key="item.id"
-        @click="selectExample(item)"
-      >
-        <ThemeExample
-          v-if="item.showPosition === 'left'"
-          :itemList="item"
-        ></ThemeExample>
+  <van-pull-refresh v-model="loading" @refresh="onRefresh">
+    <!-- 主题示例 -->
+    <div class="w-100vw px-16 mt-134 flex justify-between">
+      <div class="flex flex-col items-center gap-12 w-49% rounded-10">
+        <img src="/home/example.webp" alt="" class="w-full h-230" />
+        <div
+          class="w-full rounded-10"
+          v-for="item in leftWallpaperList"
+          :key="item.id"
+          @click="selectExample(item)"
+        >
+          <ThemeExample
+            v-if="item.showPosition === 'left'"
+            :itemList="item"
+          ></ThemeExample>
+        </div>
+      </div>
+      <div class="flex flex-col items-center gap-12 w-49% rounded-10">
+        <div
+          class="w-full rounded-10"
+          v-for="item in rightWallpaperList"
+          :key="item.id"
+          @click="selectExample(item)"
+        >
+          <ThemeExample
+            v-if="item.showPosition === 'right'"
+            :itemList="item"
+          ></ThemeExample>
+        </div>
       </div>
     </div>
-    <div class="flex flex-col items-center gap-12 w-49% rounded-10">
-      <div
-        class="w-full rounded-10"
-        v-for="item in rightWallpaperList"
-        :key="item.id"
-        @click="selectExample(item)"
-      >
-        <ThemeExample
-          v-if="item.showPosition === 'right'"
-          :itemList="item"
-        ></ThemeExample>
-      </div>
-    </div>
-  </div>
+  </van-pull-refresh>
 </template>
 
 <script setup lang="ts">
@@ -84,6 +86,15 @@ import router from '@/router';
 
 const tabId = ref(0);
 const scrollRef = ref<HTMLDivElement | null>(null);
+
+// 下拉刷新
+const loading = ref(false);
+const onRefresh = () => {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+  }, 1000);
+};
 
 const leftWallpaperList = wallpaperList.filter(
   item => item.showPosition === 'left',
