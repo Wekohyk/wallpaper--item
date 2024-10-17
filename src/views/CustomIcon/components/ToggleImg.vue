@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center gap-56">
-    <div class="text-center">
+  <div class="flex items-center gap-56 py-14 pl-16">
+    <div class="text-center" @click="chooseApp">
       <div
         class="flex justify-center items-center w-72 h-72 bg-#F6F7F9 rounded-18"
       >
@@ -28,5 +28,7 @@
 </template>
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+
+const chooseApp = () => {};
 </script>
 <style scoped lang="scss"></style>

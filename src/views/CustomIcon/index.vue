@@ -10,26 +10,30 @@
     <div class="bg-#F6F7F9 w-full px-20 mt-20 mb-23">
       <!-- 上方自定义图标 -->
       <div
-        class="bg-#FFF rounded-16 flex flex-col justify-center items-center overflow-hidden"
+        class="rounded-16 flex flex-col justify-center items-center overflow-hidden"
       >
-        <van-cell
-          v-for="(item, index) in toggleImgList"
-          :key="index"
-          class="my-grid-item"
-        >
-          <template #title>
-            <van-swipe-cell :before-close="beforeClose" class="w-full pl-10">
-              <ToggleImg></ToggleImg>
-              <template #right>
-                <div
-                  class="flex justify-center items-center w-74 h-full bg-#FF3B30 text-center text-#fff text-14"
-                >
-                  删除
-                </div>
-              </template>
-            </van-swipe-cell>
-          </template>
-        </van-cell>
+        <TransitionGroup name="slide-right">
+          <van-cell
+            v-for="(item, index) in toggleImgList"
+            :key="item"
+            class="my-grid-item"
+            :class="getClass(index)"
+          >
+            <template #title>
+              <van-swipe-cell class="w-full pl-10">
+                <ToggleImg></ToggleImg>
+                <template #right>
+                  <div
+                    @click="beforeClose(index)"
+                    class="flex justify-center items-center w-74 h-full bg-#FF3B30 text-center text-#fff text-14"
+                  >
+                    删除
+                  </div>
+                </template>
+              </van-swipe-cell>
+            </template>
+          </van-cell>
+        </TransitionGroup>
       </div>
 
       <div
@@ -68,6 +72,7 @@
     </div>
   </PageLayout>
 </template>
+
 <script setup lang="ts">
 import PageLayout from '@/components/PageLayout.vue';
 import ToggleImg from './components/ToggleImg.vue';
@@ -76,17 +81,38 @@ import { ref } from 'vue';
 
 const toggleImgList = ref<number[]>([0, 1, 2]);
 
-const addToggleImg = () => {
-  console.log(toggleImgList.value);
-  toggleImgList.value.push(toggleImgList.value.length);
+// 动画效果
+const getClass = (index: number) => {
+  if (index === toggleImgList.value.length - 1) {
+    return 'slide-right-enter-active';
+  } else {
+    return '';
+  }
 };
 
-const beforeClose = () => {
-  console.log('delete');
+// 添加
+const addToggleImg = () => {
+  toggleImgList.value.push(new Date().valueOf());
+};
+
+// 删除
+const beforeClose = (index: number) => {
+  toggleImgList.value.splice(index, 1);
 };
 </script>
 <style scoped lang="scss">
 .my-grid-item {
   padding: 0px;
+}
+
+// TransitionGroup 动画
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(-100%);
 }
 </style>

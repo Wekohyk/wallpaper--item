@@ -121,7 +121,6 @@ const back = () => {
     // window.close();
     // 利用vue-router返回上一页
     router.back();
-    console.log('关闭当前页面');
   }
 };
 </script>

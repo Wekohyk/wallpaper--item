@@ -3,6 +3,7 @@
     <div class="flex justify-between pt-44 pl-16 pr-12 bg-#FFF w-full">
       <div
         class="flex justify-center items-center w-120 h-32 bg-#0A7AFF/6% rounded-19"
+        @click="linkCustomIcon"
       >
         <img src="/home/customIcon.webp" class="w-24 h-24 rounded-50%" />
         <div class="ml-4 text-12 text-#0A7AFF font-500">自定义图标</div>
@@ -79,6 +80,7 @@ import { Icon } from '@iconify/vue';
 import ThemeExample from './components/ThemeExample.vue';
 import { wallpaperTypeList, wallpaperList } from './date';
 import { ref } from 'vue';
+import router from '@/router';
 
 const tabId = ref(0);
 const scrollRef = ref<HTMLDivElement | null>(null);
@@ -110,6 +112,10 @@ const moveCenter = (e: MouseEvent, index: number) => {
 
 const selectExample = (item: { id: number }) => {
   console.log(item.id);
+};
+
+const linkCustomIcon = () => {
+  router.push('/customIcon');
 };
 </script>
 
