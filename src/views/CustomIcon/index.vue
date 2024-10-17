@@ -21,7 +21,10 @@
           >
             <template #title>
               <van-swipe-cell class="w-full pl-10">
-                <ToggleImg></ToggleImg>
+                <ToggleImg
+                  @chooseNewIcon="chooseNewIcon"
+                  @chooseOldIcon="chooseOldIcon"
+                ></ToggleImg>
                 <template #right>
                   <div
                     @click="beforeClose(index)"
@@ -49,14 +52,28 @@
       </div>
 
       <!-- 广告 -->
-      <div class="bg-#FFF rounded-16 px-16 pt-16 pb-20">
-        <img
-          src="/customIcon/advertisementImg.webp"
-          alt=""
-          class="w-full h-full rounded-14"
-        />
+      <div class="bg-#FFF rounded-16 px-16 pt-16 pb-20 relative top-0 left-0">
+        <div class="w-full h-full mb-28" v-if="isShowAdvertisement">
+          <div
+            class="w-50 h-50 absolute top-20 -right-20"
+            @click="closeAdvertisement"
+          >
+            <Icon
+              icon="material-symbols:close-rounded"
+              width="10px"
+              height="10px"
+              color="#B3B3B3"
+            />
+          </div>
 
-        <div class="text-14 mt-28">
+          <img
+            src="/customIcon/advertisementImg.webp"
+            alt=""
+            class="w-full h-full rounded-14"
+          />
+        </div>
+
+        <div class="text-14">
           <div class="font-500">使用步骤</div>
           <div class="text-#8A8A8A mt-10">1.选择原图标->选择新图标</div>
           <div class="text-#8A8A8A mt-8">2.点击右上角“安装”，即可安装成功</div>
@@ -78,10 +95,11 @@ import PageLayout from '@/components/PageLayout.vue';
 import ToggleImg from './components/ToggleImg.vue';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
+import { showFailToast, showToast } from 'vant';
 
 const toggleImgList = ref<number[]>([0, 1, 2]);
 
-// 动画效果
+// 删除 \ 添加动画效果
 const getClass = (index: number) => {
   if (index === toggleImgList.value.length - 1) {
     return 'slide-right-enter-active';
@@ -98,6 +116,23 @@ const addToggleImg = () => {
 // 删除
 const beforeClose = (index: number) => {
   toggleImgList.value.splice(index, 1);
+};
+
+// 点击原图标
+const chooseOldIcon = () => {
+  showToast('暂时不支持选择App');
+};
+
+// 点击新图标
+const chooseNewIcon = () => {
+  showFailToast('请先选择App');
+};
+
+// 关闭广告
+const isShowAdvertisement = ref(true);
+
+const closeAdvertisement = () => {
+  isShowAdvertisement.value = false;
 };
 </script>
 <style scoped lang="scss">
