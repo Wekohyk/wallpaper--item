@@ -20,7 +20,7 @@
             :class="getClass(index)"
           >
             <template #title>
-              <van-swipe-cell class="w-full pl-10">
+              <van-swipe-cell class="w-full">
                 <ToggleImg
                   @chooseNewIcon="chooseNewIcon"
                   @chooseOldIcon="chooseOldIcon"
@@ -51,9 +51,7 @@
 
       <!-- 广告 -->
       <div class="bg-#FFF rounded-16 px-16 pt-16 pb-20 relative top-0 left-0">
-        <div
-          class="w-full h-full mb-28 transition-all duration-300 ease-in-out"
-        >
+        <div class="w-full h-full mb-28">
           <div
             class="w-50 h-50 absolute top-10 -right-20"
             @click="openAdvertisement"

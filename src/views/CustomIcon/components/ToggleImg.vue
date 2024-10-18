@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-56 py-14 pl-16">
+  <div class="flex items-center justify-center gap-56 py-14">
     <div class="text-center">
       <div
         class="flex justify-center items-center w-72 h-72 bg-#F6F7F9 rounded-18"
