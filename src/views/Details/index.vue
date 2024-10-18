@@ -15,7 +15,7 @@
       <Icon icon="hugeicons:share-04" width="24px" height="24px" />
     </template>
 
-    <div class="w-full">
+    <div class="w-full h-full overflow-y-auto scrollbar-hidden">
       <div class="px-17 flex gap-20 overflow-x-auto scrollbar-hidden">
         <div
           class="h-full relative mb-20 mt-10"
@@ -53,7 +53,18 @@
           <div class="px50 py10 bg-#F6F7F9 rounded-57 text-#0A7AFF">
             选择安装
           </div>
-          <div class="px50 py10 bg-#0A7AFF rounded-57 text-#FFF">一键应用</div>
+          <div class="flex flex-col relative top-0 left-0">
+            <div
+              class="w159 h42 text-center lh-42 bg-#0A7AFF rounded-57 text-#FFF"
+              @click="clickBtn"
+            >
+              {{ applyText }}
+            </div>
+            <div
+              class="h42 text-center lh-42 bg-#FFFFFF/30 absolute"
+              :style="progressStyle"
+            ></div>
+          </div>
         </div>
       </div>
 
@@ -112,6 +123,7 @@ import { Icon } from '@iconify/vue';
 import { wallpaperList } from '@/views/date';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { showFailToast, showSuccessToast } from 'vant';
 
 // 获取router的参数, 根据router参数获取展示的数据
 const router = useRouter();
@@ -127,6 +139,58 @@ const openAdvertisement = () => {
 
 const closeAdvertisement = (value: boolean) => {
   isShowAdvertisement.value = value;
+};
+
+// progressWidth
+const progressWidth = ref(0);
+const progressRadius = ref(0);
+const progressNum = ref(0);
+const applyText = ref('一键应用');
+
+const progressStyle = ref({
+  width: progressWidth.value + 'px',
+  borderRadius: progressRadius.value + 'px',
+});
+
+// 获取随机数
+const getRandomNum = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const clickBtn = () => {
+  const handleCompletion = () => {
+    const randomNum = getRandomNum(1, 10);
+    console.log(randomNum);
+    if (randomNum >= 3) {
+      showSuccessToast('下载壁纸成功');
+    } else {
+      showFailToast('下载壁纸失败');
+    }
+  };
+
+  const updateProgress = () => {
+    progressWidth.value += 1.59;
+    progressNum.value += 1;
+
+    if (progressNum.value < 50) {
+      applyText.value = '正在下载壁纸 ' + progressNum.value + '%';
+    } else if (progressNum.value < 100) {
+      applyText.value = '正在保存壁纸 ' + progressNum.value + '%';
+    } else {
+      clearInterval(setInterTimer);
+      applyText.value = '一键应用';
+      progressWidth.value = 0;
+      progressNum.value = 0;
+      handleCompletion();
+    }
+
+    progressStyle.value = {
+      width: progressWidth.value + 'px',
+      borderRadius: progressRadius.value + 'px',
+    };
+  };
+
+  const setInterTimer = setInterval(updateProgress, 30);
 };
 </script>
 
