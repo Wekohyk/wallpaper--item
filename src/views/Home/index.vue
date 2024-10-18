@@ -45,7 +45,7 @@
 
   <van-pull-refresh v-model="loading" @refresh="onRefresh">
     <!-- 主题示例 -->
-    <div class="w-100vw px-16 mt-134 flex justify-between">
+    <div class="w-100vw px-16 mt-134 flex justify-between" v-if="isGetData">
       <div class="flex flex-col items-center gap-12 w-49% rounded-10">
         <img src="/home/example.webp" alt="" class="w-full h-230" />
         <div
@@ -74,12 +74,18 @@
         </div>
       </div>
     </div>
+
+    <DataAcquisitionFailure
+      v-else
+      @isShowAcquisition="isShowAcquisition"
+    ></DataAcquisitionFailure>
   </van-pull-refresh>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import ThemeExample from './components/ThemeExample.vue';
+import DataAcquisitionFailure from '@/components/DataAcquisitionFailure.vue';
 import { wallpaperTypeList, wallpaperList } from './date';
 import { ref } from 'vue';
 import router from '@/router';
@@ -127,6 +133,12 @@ const selectExample = (item: { id: number }) => {
 
 const linkCustomIcon = () => {
   router.push('/customIcon');
+};
+
+const isGetData = ref(false);
+
+const isShowAcquisition = (value: boolean) => {
+  isGetData.value = value;
 };
 </script>
 
