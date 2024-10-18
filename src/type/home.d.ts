@@ -1,4 +1,4 @@
-export type Status = 'new' | 'hot' | 'normal';
+export type Status = 'new' | 'hot' | 'normal' | 'vip';
 
 export interface Wallpaper {
   id: number;

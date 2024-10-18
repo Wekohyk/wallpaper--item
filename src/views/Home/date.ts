@@ -66,7 +66,7 @@ export const wallpaperList: Wallpaper[] = [
     avatarImg: '/home/avatar.webp',
     avatarName: '呜哈哈',
     usePeople: '1.78万人使用',
-    status: 'normal',
+    status: 'vip',
     showPosition: 'left',
   },
   {
