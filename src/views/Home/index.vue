@@ -86,7 +86,7 @@
 import { Icon } from '@iconify/vue';
 import ThemeExample from './components/ThemeExample.vue';
 import DataAcquisitionFailure from '@/components/DataAcquisitionFailure.vue';
-import { wallpaperTypeList, wallpaperList } from './date';
+import { wallpaperTypeList, wallpaperList } from '@/views/date';
 import { ref } from 'vue';
 import router from '@/router';
 
@@ -128,7 +128,7 @@ const moveCenter = (e: MouseEvent, index: number) => {
 };
 
 const selectExample = (item: { id: number }) => {
-  console.log(item.id);
+  router.push(`/details/${item.id}`);
 };
 
 const linkCustomIcon = () => {

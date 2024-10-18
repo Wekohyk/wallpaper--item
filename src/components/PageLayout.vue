@@ -17,7 +17,7 @@
       <div class="navigation-bar grid grid-cols-[1fr_auto_1fr]">
         <div class="flex-1 flex items-center h-44 pl-16px">
           <div class="flex items-center mt-1" v-if="!hideBack" @click="back">
-            <div class="relative w-26 h-26">
+            <div class="relative">
               <Icon
                 :color="isShowGoBackMode ? '#000' : '#fff'"
                 icon="weui:back-filled"

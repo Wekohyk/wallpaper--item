@@ -1,0 +1,105 @@
+<template>
+  <PageLayout goBackHeight="16px" goBackWidth="10px" background="#F6F7F9">
+    <template #navigationBarLeading>
+      <div class="flex gap-8 items-center pl-14">
+        <img
+          :src="getWallpaperList.avatarImg"
+          alt=""
+          class="w-28 h-28 rounded-50%"
+        />
+        <div>{{ getWallpaperList.avatarName }}</div>
+      </div>
+    </template>
+
+    <template #navigationBarTrailing>
+      <Icon icon="hugeicons:share-04" width="24px" height="24px" />
+    </template>
+
+    <div class="mt-10 w-full">
+      <div class="px-17 flex gap-20 overflow-x-auto scrollbar-hidden">
+        <div
+          class="h-full"
+          v-for="item in getWallpaperList.imageList"
+          :key="item"
+        >
+          <img :src="item" alt="" class="w-190 h-400 rounded-16" />
+        </div>
+      </div>
+      <div class="w-full bg-#fff mt-20 rounded-t-20 px20 pt17 pb24">
+        <div class="flex items-center justify-between">
+          <div class="text-16 font-500">{{ getWallpaperList.title }}</div>
+          <div class="flex items-center">
+            <div class="text-#8A8A8A text-13">版权声明</div>
+            <Icon
+              icon="weui:arrow-outlined"
+              width="16px"
+              height="16px"
+              color="#8A8A8A"
+            />
+          </div>
+        </div>
+        <div class="text-12 text-#8A8A8A mt-10">
+          {{ getWallpaperList.value }}
+        </div>
+
+        <div class="flex justify-between items-center mt-24">
+          <div class="px50 py10 bg-#F6F7F9 rounded-57 text-#0A7AFF">
+            选择安装
+          </div>
+          <div class="px50 py10 bg-#0A7AFF rounded-57 text-#FFF">一键应用</div>
+        </div>
+      </div>
+
+      <div class="w-full h-2"></div>
+
+      <div class="relative top-4 left-0">
+        <div class="w-50 h-50 absolute top-4 -right-24">
+          <Icon
+            icon="material-symbols:close-rounded"
+            width="16px"
+            height="16px"
+            color="#B3B3B3"
+          />
+        </div>
+        <img
+          src="/details/advertisementImg.webp"
+          alt=""
+          class="w-full h-full aspect-ratio-390/84"
+        />
+      </div>
+
+      <div class="w-full px23 pt-16 bg-#FFF pb44">
+        <div class="text-16 font-500">猜你喜欢</div>
+
+        <div class="grid grid-rows-3 grid-flow-col gap-13 mt-20">
+          <div
+            class="rounded-10 overflow-hidden"
+            v-for="item in wallpaperList"
+            :key="item.id"
+          >
+            <img
+              :src="item.image"
+              alt=""
+              class="w-full h-full aspect-ratio-108/228"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </PageLayout>
+</template>
+
+<script setup lang="ts">
+import PageLayout from '@/components/PageLayout.vue';
+import { Icon } from '@iconify/vue';
+
+import { wallpaperList } from '@/views/date';
+import { useRouter } from 'vue-router';
+
+// 获取router的参数, 根据router参数获取展示的数据
+const router = useRouter();
+const id = Number(router.currentRoute.value.params.id);
+const getWallpaperList = wallpaperList[id];
+</script>
+
+<style scoped lang="scss"></style>

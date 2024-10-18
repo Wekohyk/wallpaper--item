@@ -10,4 +10,5 @@ export interface Wallpaper {
   usePeople: string;
   status: Status;
   showPosition: 'left' | 'right';
+  imageList: string[];
 }

@@ -13,6 +13,11 @@ const router = createRouter({
       component: () => import('@/views/CustomIcon/index.vue'),
       meta: { title: 'CustomIcon' },
     },
+    {
+      path: '/details/:id',
+      component: () => import('@/views/Details/index.vue'),
+      meta: { title: 'Details' },
+    },
   ],
 });
 
