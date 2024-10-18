@@ -35,7 +35,7 @@
       <div class="w-full bg-#fff rounded-t-20 px20 pt17 pb24">
         <div class="flex items-center justify-between">
           <div class="text-16 font-500">{{ getWallpaperList.title }}</div>
-          <div class="flex items-center">
+          <div class="flex items-center" @click="copyrightNotice">
             <div class="text-#8A8A8A text-13">版权声明</div>
             <Icon
               icon="weui:arrow-outlined"
@@ -113,11 +113,17 @@
     :visible="isShowAdvertisement"
     @visibleChange="closeAdvertisement"
   ></FeedbackPopup>
+
+  <BottomPopup
+    :visible="isShowPopup"
+    @visibleChange="visibleChange"
+  ></BottomPopup>
 </template>
 
 <script setup lang="ts">
 import PageLayout from '@/components/PageLayout.vue';
 import FeedbackPopup from '@/components/FeedbackPopup.vue';
+import BottomPopup from '@/components/BottomPopup.vue';
 import { Icon } from '@iconify/vue';
 import { getRandomNum } from '@/utils';
 import { wallpaperList } from '@/views/date';
@@ -184,8 +190,15 @@ const clickBtn = () => {
       borderRadius: progressRadius.value + 'px',
     };
   };
-
   const setInterTimer = setInterval(updateProgress, 30);
+};
+
+const isShowPopup = ref(false);
+const visibleChange = value => {
+  isShowPopup.value = value;
+};
+const copyrightNotice = () => {
+  isShowPopup.value = true;
 };
 </script>
 
