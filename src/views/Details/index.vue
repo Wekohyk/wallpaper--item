@@ -60,7 +60,10 @@
       <div class="w-full h-2"></div>
 
       <div class="relative top-4 left-0">
-        <div class="w-50 h-50 absolute top-4 -right-24">
+        <div
+          class="w-50 h-50 absolute top-4 -right-24"
+          @click="openAdvertisement"
+        >
           <Icon
             icon="material-symbols:close-rounded"
             width="16px"
@@ -94,19 +97,37 @@
       </div>
     </div>
   </PageLayout>
+
+  <FeedbackPopup
+    :visible="isShowAdvertisement"
+    @visibleChange="closeAdvertisement"
+  ></FeedbackPopup>
 </template>
 
 <script setup lang="ts">
 import PageLayout from '@/components/PageLayout.vue';
+import FeedbackPopup from '@/components/FeedbackPopup.vue';
 import { Icon } from '@iconify/vue';
 
 import { wallpaperList } from '@/views/date';
 import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 
 // 获取router的参数, 根据router参数获取展示的数据
 const router = useRouter();
 const id = Number(router.currentRoute.value.params.id);
 const getWallpaperList = wallpaperList[id];
+
+// 关闭广告
+const isShowAdvertisement = ref(false);
+
+const openAdvertisement = () => {
+  isShowAdvertisement.value = true;
+};
+
+const closeAdvertisement = (value: boolean) => {
+  isShowAdvertisement.value = value;
+};
 </script>
 
 <style scoped lang="scss"></style>

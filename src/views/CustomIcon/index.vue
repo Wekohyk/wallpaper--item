@@ -94,7 +94,7 @@
 <script setup lang="ts">
 import PageLayout from '@/components/PageLayout.vue';
 import ToggleImg from './components/ToggleImg.vue';
-import FeedbackPopup from './components/FeedbackPopup.vue';
+import FeedbackPopup from '@/components/FeedbackPopup.vue';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import { showFailToast, showToast } from 'vant';

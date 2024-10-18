@@ -11,7 +11,7 @@
     <div
       v-if="props.visible"
       @click="closePopup"
-      class="fixed top-0 left-0 right-0 bottom-0 bg-black/20"
+      class="fixed top-0 left-0 z-99999 right-0 bottom-0 bg-black/20"
     ></div>
   </transition>
 
@@ -25,7 +25,7 @@
   >
     <div
       v-if="props.visible"
-      class="w-100vw fixed flex items-center justify-center flex-col left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-[calc(50%-20px)] px-16"
+      class="w-100vw fixed z-99999 flex items-center justify-center flex-col left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-[calc(50%-20px)] px-16"
     >
       <div class="w-full bg-#FFF rounded-12 px-16 text-#0F0F0F font-400">
         <div class="my-10">内容无法正常展示(卡顿、黑白屏)</div>
