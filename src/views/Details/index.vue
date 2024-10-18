@@ -119,7 +119,7 @@
 import PageLayout from '@/components/PageLayout.vue';
 import FeedbackPopup from '@/components/FeedbackPopup.vue';
 import { Icon } from '@iconify/vue';
-
+import { getRandomNum } from '@/utils';
 import { wallpaperList } from '@/views/date';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
@@ -151,11 +151,6 @@ const progressStyle = ref({
   width: progressWidth.value + 'px',
   borderRadius: progressRadius.value + 'px',
 });
-
-// 获取随机数
-const getRandomNum = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
 
 const clickBtn = () => {
   const handleCompletion = () => {
