@@ -39,24 +39,24 @@
         </TransitionGroup>
       </div>
 
-      <div
-        class="flex items-center justify-center mt-19 mb-13"
-        @click="addToggleImg"
-      >
+      <div class="flex items-center justify-center mt-19 mb-13">
         <Icon
           icon="ic:round-add-circle"
           width="30px"
           height="30px"
           color="#0A7AFF"
+          @click="addToggleImg"
         />
       </div>
 
       <!-- 广告 -->
       <div class="bg-#FFF rounded-16 px-16 pt-16 pb-20 relative top-0 left-0">
-        <div class="w-full h-full mb-28" v-if="isShowAdvertisement">
+        <div
+          class="w-full h-full mb-28 transition-all duration-300 ease-in-out"
+        >
           <div
-            class="w-50 h-50 absolute top-20 -right-20"
-            @click="closeAdvertisement"
+            class="w-50 h-50 absolute top-10 -right-20"
+            @click="openAdvertisement"
           >
             <Icon
               icon="material-symbols:close-rounded"
@@ -68,7 +68,6 @@
 
           <img
             src="/customIcon/advertisementImg.webp"
-            alt=""
             class="w-full h-full rounded-14"
           />
         </div>
@@ -88,11 +87,16 @@
       </div>
     </div>
   </PageLayout>
+  <FeedbackPopup
+    :visible="isShowAdvertisement"
+    @visibleChange="closeAdvertisement"
+  ></FeedbackPopup>
 </template>
 
 <script setup lang="ts">
 import PageLayout from '@/components/PageLayout.vue';
 import ToggleImg from './components/ToggleImg.vue';
+import FeedbackPopup from './components/FeedbackPopup.vue';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import { showFailToast, showToast } from 'vant';
@@ -129,10 +133,14 @@ const chooseNewIcon = () => {
 };
 
 // 关闭广告
-const isShowAdvertisement = ref(true);
+const isShowAdvertisement = ref(false);
 
-const closeAdvertisement = () => {
-  isShowAdvertisement.value = false;
+const openAdvertisement = () => {
+  isShowAdvertisement.value = true;
+};
+
+const closeAdvertisement = (value: boolean) => {
+  isShowAdvertisement.value = value;
 };
 </script>
 <style scoped lang="scss">
