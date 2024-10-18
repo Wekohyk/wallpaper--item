@@ -15,17 +15,24 @@
       <Icon icon="hugeicons:share-04" width="24px" height="24px" />
     </template>
 
-    <div class="mt-10 w-full">
+    <div class="w-full">
       <div class="px-17 flex gap-20 overflow-x-auto scrollbar-hidden">
         <div
-          class="h-full"
+          class="h-full relative mb-20 mt-10"
           v-for="item in getWallpaperList.imageList"
           :key="item"
         >
-          <img :src="item" alt="" class="w-190 h-400 rounded-16" />
+          <img
+            :src="item"
+            alt=""
+            class="w-190 h-400 rounded-16 backdrop-blur-16 relative z-999"
+          />
+          <div
+            class="bg-#2D2D2D36 blur-8 w-182 h-400 absolute top-10 left-5"
+          ></div>
         </div>
       </div>
-      <div class="w-full bg-#fff mt-20 rounded-t-20 px20 pt17 pb24">
+      <div class="w-full bg-#fff rounded-t-20 px20 pt17 pb24">
         <div class="flex items-center justify-between">
           <div class="text-16 font-500">{{ getWallpaperList.title }}</div>
           <div class="flex items-center">
@@ -71,7 +78,7 @@
       <div class="w-full px23 pt-16 bg-#FFF pb44">
         <div class="text-16 font-500">猜你喜欢</div>
 
-        <div class="grid grid-rows-3 grid-flow-col gap-13 mt-20">
+        <div class="grid gap-13 grid-cols-3 mt-20">
           <div
             class="rounded-10 overflow-hidden"
             v-for="item in wallpaperList"

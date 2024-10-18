@@ -169,4 +169,22 @@ export const wallpaperList: Wallpaper[] = [
     status: 'normal',
     showPosition: 'right',
   },
+
+  {
+    id: 9,
+    image: '/home/img3.webp',
+    imageList: [
+      '/home/img3.webp',
+      '/home/img3.webp',
+      '/home/img3.webp',
+      '/home/img3.webp',
+    ],
+    title: '雾霾蓝ins风极简',
+    value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
+    avatarImg: '/home/avatar.webp',
+    avatarName: '脑白金',
+    usePeople: '3.3万人使用',
+    status: 'normal',
+    showPosition: 'right',
+  },
 ];
