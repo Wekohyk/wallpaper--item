@@ -1,5 +1,11 @@
 export type Status = 'new' | 'hot' | 'normal' | 'vip';
 
+export type UseApp = {
+  img: string;
+  name: string;
+  accountNumber: string;
+};
+
 export interface Wallpaper {
   id: number;
   image: string;
@@ -11,4 +17,5 @@ export interface Wallpaper {
   status: Status;
   showPosition: 'left' | 'right';
   imageList: string[];
+  useApp?: UseApp[];
 }

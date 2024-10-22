@@ -47,6 +47,18 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '4.8万人使用',
     status: 'hot',
     showPosition: 'left',
+    useApp: [
+      {
+        name: '抖音',
+        img: '/details/douYin.webp',
+        accountNumber: '欣然',
+      },
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '欣然',
+      },
+    ],
   },
   {
     id: 1,
@@ -64,6 +76,18 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '2.3万人使用',
     status: 'new',
     showPosition: 'right',
+    useApp: [
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '橡皮刀',
+      },
+      {
+        name: '小红书',
+        img: '/details/redBook.webp',
+        accountNumber: '橡皮刀',
+      },
+    ],
   },
   {
     id: 2,
@@ -76,6 +100,13 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '1.78万人使用',
     status: 'vip',
     showPosition: 'left',
+    useApp: [
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '孜然味',
+      },
+    ],
   },
   {
     id: 3,
@@ -94,6 +125,7 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '9.3万人使用',
     status: 'normal',
     showPosition: 'right',
+    useApp: [],
   },
   {
     id: 4,
@@ -106,6 +138,18 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '3.5万人使用',
     status: 'normal',
     showPosition: 'left',
+    useApp: [
+      {
+        name: '小红书',
+        img: '/details/redBook.webp',
+        accountNumber: '哇哈哈',
+      },
+      {
+        name: 'WeiXin',
+        img: '/details/weiXin.webp',
+        accountNumber: '哇哈哈',
+      },
+    ],
   },
   {
     id: 5,
@@ -123,6 +167,28 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '11.5万人使用',
     status: 'normal',
     showPosition: 'right',
+    useApp: [
+      {
+        name: '抖音',
+        img: '/details/douYin.webp',
+        accountNumber: '动动动',
+      },
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '动动动',
+      },
+      {
+        name: '小红书',
+        img: '/details/redBook.webp',
+        accountNumber: '动动动',
+      },
+      {
+        name: 'WeiXin',
+        img: '/details/weiXin.webp',
+        accountNumber: '动动动',
+      },
+    ],
   },
   {
     id: 6,
@@ -135,6 +201,23 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '9.01万人使用',
     status: 'normal',
     showPosition: 'left',
+    useApp: [
+      {
+        name: '抖音',
+        img: '/details/douYin.webp',
+        accountNumber: '奥利给',
+      },
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '奥利给',
+      },
+      {
+        name: 'WeiXin',
+        img: '/details/weiXin.webp',
+        accountNumber: '奥利给',
+      },
+    ],
   },
   {
     id: 7,
@@ -156,6 +239,23 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '2.2万人使用',
     status: 'normal',
     showPosition: 'right',
+    useApp: [
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '天亮了',
+      },
+      {
+        name: '小红书',
+        img: '/details/redBook.webp',
+        accountNumber: '天亮了',
+      },
+      {
+        name: 'WeiXin',
+        img: '/details/weiXin.webp',
+        accountNumber: '天亮了',
+      },
+    ],
   },
   {
     id: 8,
@@ -168,6 +268,23 @@ export const wallpaperList: Wallpaper[] = [
     usePeople: '3.3万人使用',
     status: 'normal',
     showPosition: 'right',
+    useApp: [
+      {
+        name: '抖音',
+        img: '/details/douYin.webp',
+        accountNumber: '超好喝',
+      },
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '超好喝',
+      },
+      {
+        name: '小红书',
+        img: '/details/redBook.webp',
+        accountNumber: '超好喝',
+      },
+    ],
   },
 
   {
@@ -182,9 +299,31 @@ export const wallpaperList: Wallpaper[] = [
     title: '雾霾蓝ins风极简',
     value: '这是一段描述文案，这是一段描这是一段描述文案，这是一段描',
     avatarImg: '/home/avatar.webp',
-    avatarName: '脑白金',
+    avatarName: '一杯cup',
     usePeople: '3.3万人使用',
     status: 'normal',
     showPosition: 'right',
+    useApp: [
+      {
+        name: '抖音',
+        img: '/details/douYin.webp',
+        accountNumber: '很难喝',
+      },
+      {
+        name: '微博',
+        img: '/details/weiBo.webp',
+        accountNumber: '很难喝',
+      },
+      {
+        name: '小红书',
+        img: '/details/redBook.webp',
+        accountNumber: '很难喝',
+      },
+      {
+        name: 'WeiXin',
+        img: '/details/weiXin.webp',
+        accountNumber: '很难喝',
+      },
+    ],
   },
 ];

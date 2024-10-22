@@ -1,7 +1,10 @@
 <template>
   <PageLayout goBackHeight="16px" goBackWidth="10px" background="#F6F7F9">
     <template #navigationBarLeading>
-      <div class="flex gap-8 items-center pl-14">
+      <div
+        class="flex gap-8 items-center pl-14"
+        @click="copyrightNotice('userProfile')"
+      >
         <img
           :src="getWallpaperList.avatarImg"
           alt=""
@@ -35,7 +38,10 @@
       <div class="w-full bg-#fff rounded-t-20 px20 pt17 pb24">
         <div class="flex items-center justify-between">
           <div class="text-16 font-500">{{ getWallpaperList.title }}</div>
-          <div class="flex items-center" @click="copyrightNotice">
+          <div
+            class="flex items-center"
+            @click="copyrightNotice('copyrightNotice')"
+          >
             <div class="text-#8A8A8A text-13">版权声明</div>
             <Icon
               icon="weui:arrow-outlined"
@@ -115,9 +121,17 @@
   ></FeedbackPopup>
 
   <BottomPopup
+    :itemList="getWallpaperList"
     :visible="isShowPopup"
     @visibleChange="visibleChange"
-  ></BottomPopup>
+  >
+    <template #copyrightNotice>
+      <div v-if="isShowDetails === 'userProfile'"></div>
+    </template>
+    <template #userProfile>
+      <div v-if="isShowDetails === 'copyrightNotice'"></div>
+    </template>
+  </BottomPopup>
 </template>
 
 <script setup lang="ts">
@@ -130,6 +144,7 @@ import { wallpaperList } from '@/views/date';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { showFailToast, showSuccessToast } from 'vant';
+import { PopupType } from '@/type/Details';
 
 // 获取router的参数, 根据router参数获取展示的数据
 const router = useRouter();
@@ -193,12 +208,14 @@ const clickBtn = () => {
   const setInterTimer = setInterval(updateProgress, 30);
 };
 
+const isShowDetails = ref<PopupType>('copyrightNotice');
 const isShowPopup = ref(false);
-const visibleChange = value => {
-  isShowPopup.value = value;
-};
-const copyrightNotice = () => {
+const copyrightNotice = (popupType: PopupType) => {
+  isShowDetails.value = popupType;
   isShowPopup.value = true;
+};
+const visibleChange = (value: boolean) => {
+  isShowPopup.value = value;
 };
 </script>
 
